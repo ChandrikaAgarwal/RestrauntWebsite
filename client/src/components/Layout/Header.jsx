@@ -1,0 +1,18 @@
+import { Fragment } from "react"
+import mealsImage from "../../assets/meals.jpg"
+import HeaderCartButton from "./HeaderButtonComponent"
+const Header = () => {
+    return (
+        <Fragment>
+            <header className="bg-amber-800 z-[10] h-[70px] fixed w-full flex items-center justify-between">
+            <h1 className="mx-auto w-1/2 mt-1 text-2xl text-white font-bold">ReactMeals</h1>
+            <HeaderCartButton />
+            </header>
+            <div className="z-0 overflow-hidden w-[100%]">
+                <img src={mealsImage} alt="A table full of delicious food!" className="absolute w-[150vw] h-[25rem] rotate-[-5deg] -translate-y-16 -translate-x-1 object-cover"/>
+            </div>
+        </Fragment>
+    )
+}
+
+export default Header
