@@ -10,9 +10,11 @@ const Header = () => {
             <HeaderCartButton />
             </header>
             
-            <div className="z-0 overflow-hidden w-[100%] relative">
-            <img src={mealsImage} alt="A table full of delicious food!" className=" w-[150vw] h-[25rem] rotate-[-5deg] -translate-y-16 -translate-x-1 object-cover z-0 "/>
-            <Summary className="absolute" />
+            <div className="z-0 w-[100%] relative">
+            <div className="overflow-hidden">
+            <img src={mealsImage} alt="A table full of delicious food!" className=" w-[150vw] h-[25rem] rotate-[-5deg] -translate-y-16 -translate-x-1 object-cover z-0 rounded-xl"/>
+            </div>
+            <Summary />
             </div>
         </Fragment>
     )
