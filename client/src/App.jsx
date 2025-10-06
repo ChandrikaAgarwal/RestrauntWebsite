@@ -2,13 +2,23 @@ import { Fragment,useState } from "react"
 import Header from "./components/Layout/Header"
 import AvailableMeals from "./components/Meals/AvailableMeals"
 import Cart from "./components/Cart/Cart"
+import showModalContext from "./Contexts/showCartContext"
+
 function App() {
   const[cartIsShown,setCartIsShown]=useState(false)
-    
+    const showCartHandler=()=>{
+      setCartIsShown(true)
+    }
+
+    const hideCartHandler=()=>{
+    setCartIsShown(false)
+    }
     return (
       <Fragment>
-        <Cart />
-        <Header />
+        {cartIsShown && <Cart onClose={hideCartHandler}/>}
+        <showModalContext.Provider value={{showCartHandler}}>
+          <Header/>
+        </showModalContext.Provider>  
         <main>
         <AvailableMeals />
         </main>

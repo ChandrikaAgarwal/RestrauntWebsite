@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import mealsImage from "../../assets/meals.jpg"
 import HeaderCartButton from "./HeaderButtonComponent"
 import Summary from "../UI/Summary"
-const Header = () => {
+const Header = (props) => {
     return (
         <Fragment>
             <header className="bg-amber-800 z-[10] h-[70px] fixed w-full flex items-center justify-between">
