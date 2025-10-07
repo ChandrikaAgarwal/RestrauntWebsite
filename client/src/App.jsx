@@ -3,6 +3,7 @@ import Header from "./components/Layout/Header"
 import AvailableMeals from "./components/Meals/AvailableMeals"
 import Cart from "./components/Cart/Cart"
 import showModalContext from "./Contexts/showCartContext"
+import CartProvider from "./Contexts/CartProvider"
 
 function App() {
   const[cartIsShown,setCartIsShown]=useState(false)
@@ -14,7 +15,7 @@ function App() {
     setCartIsShown(false)
     }
     return (
-      <Fragment>
+      <CartProvider>
         {cartIsShown && <Cart onClose={hideCartHandler}/>}
         <showModalContext.Provider value={{showCartHandler}}>
           <Header/>
@@ -23,7 +24,7 @@ function App() {
         <AvailableMeals />
         </main>
 
-      </Fragment>
+      </CartProvider>
   )
 }
 
