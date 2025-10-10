@@ -1,6 +1,10 @@
-import React, { Fragment } from 'react'
-
+import React, { Fragment, useContext } from 'react'
+import CartContext from '../../../Contexts/Cart-Context'
 function MealItemForm() {
+  const cartCtx=useContext(CartContext)
+  function addToCartHandler(){
+    
+  }
   return (
     <Fragment>
     <div>
@@ -11,7 +15,7 @@ function MealItemForm() {
     </div>
 
     <div>
-     <button type="button" className='rounded-xl text-white bg-amber-900 ml-4 w-[5rem]'>+ Add</button>
+     <button type="button" className='rounded-xl text-white bg-amber-900 ml-4 w-[5rem]' onClick={addToCartHandler}>+ Add</button>
     </div>
     </div>
     </Fragment>

@@ -1,4 +1,4 @@
-import { Fragment,useState } from "react"
+import { useState } from "react"
 import Header from "./components/Layout/Header"
 import AvailableMeals from "./components/Meals/AvailableMeals"
 import Cart from "./components/Cart/Cart"
@@ -10,12 +10,11 @@ function App() {
     const showCartHandler=()=>{
       setCartIsShown(true)
     }
-
     const hideCartHandler=()=>{
     setCartIsShown(false)
     }
     return (
-      <CartProvider>
+        <CartProvider>
         {cartIsShown && <Cart onClose={hideCartHandler}/>}
         <showModalContext.Provider value={{showCartHandler}}>
           <Header/>
@@ -23,8 +22,8 @@ function App() {
         <main>
         <AvailableMeals />
         </main>
+        </CartProvider>
 
-      </CartProvider>
   )
 }
 
