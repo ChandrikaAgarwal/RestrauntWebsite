@@ -1,7 +1,14 @@
 import Modal from "../UI/Modal";
+import CartContext from "../../Contexts/Cart-Context";
+import { useContext } from "react";
+import MealItem from "../Meals/MealItem/MealItem";
 const Cart = props => {
-    const cartItems = <ul>{[{ id: 'c1', name: "Sushi", amount: 2, price: 12.99 }]
-        .map((item) => <li>{item.name}</li>)}</ul>
+    const cartCntx=useContext(CartContext)
+    console.log("context items:",cartCntx.items);
+    
+    const cartItems = <ul>{cartCntx.items.map((item,index) => <MealItem meal={item}></MealItem>)}</ul>
+    console.log("cartItems: ",cartItems);
+    
     return (
         <Modal onClose={props.onClose}>
             {cartItems} 

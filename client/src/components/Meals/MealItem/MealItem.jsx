@@ -9,9 +9,9 @@ function MealItem(props) {
         <div className='italic ml-6 mb-1'>{props.meal.description}</div>
         <div className='font-bold text-md ml-6 text-amber-900 mb-2'>{price}</div>
     </div>
-    <MealItemForm />
+    <MealItemForm item={props}/>
     </div>
-    <hr className='mx-auto w-[45rem] ' />
+    <hr className='mx-auto w-[45rem]' />
   </li>
 }
 

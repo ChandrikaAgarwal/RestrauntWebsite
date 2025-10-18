@@ -1,10 +1,15 @@
 import CartContext from "./Cart-Context";
 
 const CartProvider=props=>{
-    const addItemToCartHandler=item=>{} 
+    let items=[];
+    const addItemToCartHandler=item=>{
+       items.push(item)
+        console.log("inside addItemToCartHandler ",cartContextObj);
+        
+    } 
     const removeItemFromCartHandler=id=>{}
     const cartContextObj={
-     items:[],
+     items:items,
      totalAmount:0,
      addItem:addItemToCartHandler,
      removeItem:removeItemFromCartHandler
