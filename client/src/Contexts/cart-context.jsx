@@ -8,3 +8,4 @@ const cartContext = createContext({
 })
 
 export default cartContext;
+//some changes made here
