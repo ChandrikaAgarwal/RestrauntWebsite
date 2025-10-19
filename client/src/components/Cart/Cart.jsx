@@ -1,5 +1,5 @@
 import Modal from "../UI/Modal";
-import CartContext from "../../Contexts/Cart-Context";
+import CartContext from "../../Contexts/cart-Context";
 import { useContext } from "react";
 import MealItem from "../Meals/MealItem/MealItem";
 const Cart = props => {

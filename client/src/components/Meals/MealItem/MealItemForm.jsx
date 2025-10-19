@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react'
-import CartContext from '../../../Contexts/Cart-Context'
+import CartContext from '../../../Contexts/cart-Context'
 import Cart from '../../Cart/Cart'
 function MealItemForm(props) {
   const cartCtx=useContext(CartContext)
