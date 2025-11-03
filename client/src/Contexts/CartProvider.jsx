@@ -1,10 +1,21 @@
-import CartContext from "./Cart-Context";
+import { useState } from "react";
+import CartContext from "./cart-Context";
 
 const CartProvider=props=>{
-    let items=[];
+    const [items,setItems]=useState([])
     const addItemToCartHandler=item=>{
-       items.push(item)
-        console.log("inside addItemToCartHandler ",cartContextObj);
+        setItems((prevItems)=>{                     
+            const existingItemIndex=prevItems.findIndex((i)=>i.meal.id===item.meal.id);  
+            let updatedItems;
+            if(existingItemIndex!==-1){
+                updatedItems=[...prevItems];
+                updatedItems[existingItemIndex].quantity=item.quantity
+            }else{
+                updatedItems=[...prevItems,item]
+            }
+            return updatedItems;
+            
+        })
         
     } 
     const removeItemFromCartHandler=id=>{}

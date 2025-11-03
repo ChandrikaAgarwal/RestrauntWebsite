@@ -3,10 +3,13 @@ import CartContext from '../../../Contexts/cart-Context'
 import Cart from '../../Cart/Cart'
 function MealItemForm(props) {
   const cartCtx=useContext(CartContext)
-
+   
   function addToCartHandler(e){
     e.preventDefault()
-    cartCtx.addItem(props.item)
+    let quantity=document.getElementById(`amount_${props.item.meal.id}`).value  
+    console.log("quantity in form: ",quantity);
+     
+    cartCtx.addItem({...props.item,quantity:Number(quantity)})
   }
 
   return (
@@ -15,7 +18,7 @@ function MealItemForm(props) {
     <form>
     <div className='flex items-end justify-end mb-2 mt-2'>
       <label htmlFor="amount" className='font-bold'>Amount</label>
-      <input type="number" name="amount" id="amount" className='h-[30px] w-[3rem] rounded-md bg-white ml-2' />
+      <input type="number" name="amount" id={`amount_${props.item.meal.id}`} className='h-[30px] w-[3rem] rounded-md bg-white ml-2' />
     </div>
 
     <div>
