@@ -18,7 +18,19 @@ const CartProvider=props=>{
         })
         
     } 
-    const removeItemFromCartHandler=id=>{}
+    const removeItemFromCartHandler=id=>{
+        setItems((prevItems)=>{
+            const existingItemIndex=prevItems.findIndex((i)=>i.meal.id===id)
+            let itemsAfterRemoval;
+            if(existingItemIndex!==-1){
+               itemsAfterRemoval=prevItems.filter((i)=>i.meal.id!==id)
+            }else{
+                console.error("Item to be removed not found in cart")
+            }
+            return itemsAfterRemoval;
+
+        })
+    }
     const cartContextObj={
      items:items,
      totalAmount:0,

@@ -6,9 +6,7 @@ function MealItemForm(props) {
    
   function addToCartHandler(e){
     e.preventDefault()
-    let quantity=document.getElementById(`amount_${props.item.meal.id}`).value  
-    console.log("quantity in form: ",quantity);
-     
+    let quantity=document.getElementById(`amount_${props.item.meal.id}`).value      
     cartCtx.addItem({...props.item,quantity:Number(quantity)})
   }
 
