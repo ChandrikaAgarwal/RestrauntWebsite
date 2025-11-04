@@ -2,6 +2,7 @@ import Modal from "../UI/Modal";
 import CartContext from "../../Contexts/cart-Context";
 import { useContext } from "react";
 import MealItem from "../Meals/MealItem/MealItem";
+import Button from "../UI/Button";
 const Cart = props => {
     const cartCntx=useContext(CartContext)
 
@@ -15,16 +16,17 @@ const Cart = props => {
     console.log("context items:",cartCntx.items);
     const cartItems = <ul>{cartCntx.items.map((item,index) => (
         <li>
-            <div className="">
-            <h2 className="text-lg font-bold">{item.meal.name}</h2> 
-            <div className="flex"><p className="font-bold text-amber-900 text-sm mr-5">${item.meal.price}</p> <div className="border px-0.5 rounded-md">x{item.quantity}</div> </div> 
-            <button className="border rounded-md bg-gray-700 p-1 ml-5" id={`del-${item.meal.id}`} onClick={removeItemFromCart}>Delete</button>
+           
+            <h2 className="text-lg font-bold mb-2">{item.meal.name}</h2> 
+            <div className="flex gap-30 items-start justify-between"><p className="font-bold text-amber-900 text-md">${item.meal.price}</p> <div className="border px-2 rounded-sm">x{item.quantity}</div>  
+            <Button minus="-" plus="+" />
             </div>
+            <hr className="mt-2"/>
         </li>
     ))}
     </ul>
     const totalAmount=cartCntx.items.reduce((acc,item)=>{
-        return acc+(item.meal.price*item.quantity)
+        return acc+(item.meal.price.toFixed(2)*item.quantity)
     },0)
     console.log("cartItems: ",cartItems);
     
