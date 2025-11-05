@@ -1,5 +1,5 @@
 import Modal from "../UI/Modal";
-import CartContext from "../../Contexts/cart-Context";
+import CartContext from "../../Contexts/cart-context";
 import { useContext } from "react";
 import MealItem from "../Meals/MealItem/MealItem";
 import Button from "../UI/Button";
@@ -8,18 +8,19 @@ const Cart = props => {
 
     function removeItemFromCart(e){
         e.preventDefault();
-        const btnId=e.target.id
+        const btnId = e.target.id
         const idToBeRemoved=btnId.split("-")[1]
         cartCntx.removeItem(idToBeRemoved)
     }
-
-    console.log("context items:",cartCntx.items);
+    
+    
+    console.log("context items:",cartCntx);
     const cartItems = <ul>{cartCntx.items.map((item,index) => (
         <li>
            
             <h2 className="text-lg font-bold mb-2">{item.meal.name}</h2> 
             <div className="flex gap-30 items-start justify-between"><p className="font-bold text-amber-900 text-md">${item.meal.price}</p> <div className="border px-2 rounded-sm">x{item.quantity}</div>  
-            <Button minus="-" plus="+" />
+                <Button minus="-" plus="+" id={`btn-${item.meal.id}`} onRemove={removeItemFromCart} onAdd={()=>cartCntx.addItem(...item)} />
             </div>
             <hr className="mt-2"/>
         </li>

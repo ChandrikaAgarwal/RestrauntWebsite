@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CartContext from "./cart-Context";
+import CartContext from "./cart-context";
 
 const CartProvider=props=>{
     const [items,setItems]=useState([])
@@ -9,7 +9,7 @@ const CartProvider=props=>{
             let updatedItems;
             if(existingItemIndex!==-1){
                 updatedItems=[...prevItems];
-                updatedItems[existingItemIndex].quantity=item.quantity
+                updatedItems[existingItemIndex].quantity++;
             }else{
                 updatedItems=[...prevItems,item]
             }
@@ -18,17 +18,19 @@ const CartProvider=props=>{
         })
         
     } 
-    const removeItemFromCartHandler=id=>{
+    const removeItemFromCartHandler = id => {
         setItems((prevItems)=>{
-            const existingItemIndex=prevItems.findIndex((i)=>i.meal.id===id)
+            const existingItemIndex = prevItems.findIndex((i) => i.meal.id === id)           
             let itemsAfterRemoval;
-            if(existingItemIndex!==-1){
-               itemsAfterRemoval=prevItems.filter((i)=>i.meal.id!==id)
-            }else{
-                console.error("Item to be removed not found in cart")
+            if (existingItemIndex !== -1) {               
+                if (prevItems[existingItemIndex].quantity === 1) {
+                    itemsAfterRemoval = prevItems.filter((i) => i.meal.id !== id)
+                } else {
+                    prevItems[existingItemIndex].quantity-=1;
+                    itemsAfterRemoval = [...prevItems];
+                }
             }
             return itemsAfterRemoval;
-
         })
     }
     const cartContextObj={

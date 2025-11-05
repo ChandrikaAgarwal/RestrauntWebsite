@@ -1,8 +1,6 @@
 import React from 'react'
 import MealItemForm from './MealItemForm'
-function MealItem(props) {
-  console.log("mealItem props: ",props.meal.meal);
-  
+function MealItem(props) { 
   const price= props.meal?.price?`$${props.meal.price.toFixed(2)}`:""
   return <li>
     <div className='flex justify-between items-center m-4'>
