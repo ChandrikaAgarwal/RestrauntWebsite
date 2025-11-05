@@ -8,8 +8,7 @@ const CartProvider=props=>{
             const existingItemIndex=prevItems.findIndex((i)=>i.meal.id===item.meal.id);  
             let updatedItems;
             if(existingItemIndex!==-1){
-                updatedItems=[...prevItems];
-                updatedItems[existingItemIndex].quantity++;
+                updatedItems=prevItems.map((i,index)=>index===existingItemIndex?{...i,quantity:i.quantity+item.quantity}:i);
             }else{
                 updatedItems=[...prevItems,item]
             }

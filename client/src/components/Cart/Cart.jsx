@@ -12,24 +12,20 @@ const Cart = props => {
         const idToBeRemoved=btnId.split("-")[1]
         cartCntx.removeItem(idToBeRemoved)
     }
-    
-    
-    console.log("context items:",cartCntx);
     const cartItems = <ul>{cartCntx.items.map((item,index) => (
         <li>
            
             <h2 className="text-lg font-bold mb-2">{item.meal.name}</h2> 
             <div className="flex gap-30 items-start justify-between"><p className="font-bold text-amber-900 text-md">${item.meal.price}</p> <div className="border px-2 rounded-sm">x{item.quantity}</div>  
-                <Button minus="-" plus="+" id={`btn-${item.meal.id}`} onRemove={removeItemFromCart} onAdd={()=>cartCntx.addItem(...item)} />
+                <Button minus="-" plus="+" id={`btn-${item.meal.id}`} onRemove={removeItemFromCart} onAdd={()=>cartCntx.addItem({...item,quantity:1})} />
             </div>
             <hr className="mt-2"/>
         </li>
     ))}
     </ul>
     const totalAmount=cartCntx.items.reduce((acc,item)=>{
-        return acc+(item.meal.price.toFixed(2)*item.quantity)
+        return acc+(item.meal.price*item.quantity)
     },0)
-    console.log("cartItems: ",cartItems);
     
     return (
         <Modal onClose={props.onClose}>
