@@ -14,7 +14,6 @@ const Cart = props => {
     }
     const cartItems = <ul>{cartCntx.items.map((item,index) => (
         <li>
-           
             <h2 className="text-lg font-bold mb-2">{item.meal.name}</h2> 
             <div className="flex gap-30 items-start justify-between"><p className="font-bold text-amber-900 text-md">${item.meal.price}</p> <div className="border px-2 rounded-sm">x{item.quantity}</div>  
                 <Button minus="-" plus="+" id={`btn-${item.meal.id}`} onRemove={removeItemFromCart} onAdd={()=>cartCntx.addItem({...item,quantity:1})} />
@@ -32,7 +31,7 @@ const Cart = props => {
             {cartItems} 
             <div className="flex items-end justify-between">
                 <span className="font-bold text-xl">Total Amount</span>
-                <span className="font-bold text-xl text-amber-900">{totalAmount}</span>
+                <span className="font-bold text-xl text-amber-900">{totalAmount.toFixed(2)}</span>
             </div>
             <div className="flex items-end justify-end">
                 <button className="m-2 border rounded-full p-2 bg-amber-800 text-white w-1/8 font-semibold" onClick={props.onClose}>Close</button>
